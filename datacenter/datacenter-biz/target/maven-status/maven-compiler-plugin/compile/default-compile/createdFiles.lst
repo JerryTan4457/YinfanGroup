@@ -1,0 +1,14 @@
+com\yfkj\datacenter\biz\config\ApplicationRepositoryConfig.class
+com\yfkj\datacenter\biz\service\VideoTransferServiceImpl.class
+com\yfkj\datacenter\biz\domain\VideoTransferDO.class
+com\yfkj\datacenter\biz\repository\VideoTransferRepository.class
+com\yfkj\datacenter\biz\manager\helper\ModelHelper.class
+com\yfkj\datacenter\biz\manager\helper\VideoTransferHelper.class
+com\yfkj\datacenter\biz\manager\VideoTransferManager.class
+com\yfkj\datacenter\biz\config\ApplicationHelperConfig.class
+com\yfkj\datacenter\biz\manager\FindAppManager.class
+com\yfkj\datacenter\biz\config\ApplicationManagerConfig.class
+com\yfkj\datacenter\biz\config\ApplicationServiceConfig.class
+com\yfkj\datacenter\biz\dao\VideoTransferMapper.class
+com\yfkj\datacenter\biz\domain\TransferDTO.class
+com\yfkj\datacenter\biz\ApplicationMain.class

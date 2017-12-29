@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yfkj.datacenter.biz.dao.VideoTransferMapper" >
+    <resultMap id="VideoTransferDO" type="com.yfkj.datacenter.biz.domain.VideoTransferDO">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="id" property="id" jdbcType="BIGINT"/>
+        <result column="event_day" property="eventDay" jdbcType="DATE"/>
+        <result column="app_id" property="appId" jdbcType="VARCHAR"/>
+        <result column="app_name" property="appName" jdbcType="VARCHAR"/>
+        <result column="province_id" property="provinceId" jdbcType="VARCHAR"/>
+        <result column="province_name" property="provinceName" jdbcType="VARCHAR"/>
+        <result column="cpid" property="cpid" jdbcType="VARCHAR"/>
+        <result column="amt" property="amt" jdbcType="BIGINT"/>
+        <result column="req_num" property="reqNum" jdbcType="BIGINT"/>
+        <result column="user_num" property="userNum" jdbcType="BIGINT"/>
+        <result column="trans_succ" property="transSucc" jdbcType="BIGINT"/>
+        <result column="d_hour" property="dhour" jdbcType="INTEGER"/>
+        <result column="businer_id" property="businerId" jdbcType="BIGINT"/>
+        <result column="businer_name" property="businerName" jdbcType="VARCHAR"/>
+        <result column="trans_type" property="transType" jdbcType="INTEGER"/>
+        <result column="second_num" property="secondNum" jdbcType="BIGINT"/>
+        <result column="inter_fee" property="interFee" jdbcType="BIGINT"/>
+
+    </resultMap>
+
+    <sql id="column_names">
+        id,event_day,app_id,app_name,province_id,province_name,cpid,amt,req_num,user_num,trans_succ,d_hour,businer_id,businer_name,trans_name,trans_type,second_num,inter_fee
+    </sql>
+
+    <select id="findByApp" resultMap="VideoTransferDO">
+        SELECT *
+        FROM tb_trans_crack_video
+        WHERE app_name LIKE concat(concat('%',#{appName}),'%')
+        limit 1
+    </select>
+
+    <select id="count" resultType="int">
+        SELECT count(*)
+        FROM tb_trans_crack_video
+        <where>
+            AND amt = 1000
+            <if test="id != 0">AND id=#{id}</if>
+            <if test="app_id != null">AND app_id = #{appId}</if>
+        </where>
+    </select>
+</mapper>

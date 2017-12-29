@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration debug = "true">
+    <appender name = "console" class = "ch.qos.logback.core.ConsoleAppender">
+        <encoding>UTF-8</encoding>
+        <filter class = "ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <layout class = "ch.qos.logback.classic.PatternLayout">
+            <pattern><![CDATA[%date %level [%thread] %logger{10} [%file:%line]- x:\(%X\) %msg%n]]></pattern>
+        </layout>
+    </appender>
+
+    <appender name = "infoFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/home/logs/center/info.log</File>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class = "ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/home/logs/center/info.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="errorFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/home/logs/center/error.log</File>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/home/logs/center/error.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <root level = "TRACE" additivity = "false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="infoFileAppender"/>
+        <appender-ref ref="errorFileAppender"/>
+    </root>
+</configuration>
